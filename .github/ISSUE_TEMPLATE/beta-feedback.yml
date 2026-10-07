@@ -1,0 +1,49 @@
+name: Beta feedback
+description: Share a first-run result for the docs-truth checker or Organized Chaos skill.
+title: "[Beta] "
+body:
+  - type: markdown
+    attributes:
+      value: "Use synthetic examples and sanitized errors. Do not post tokens, private repository content, or vulnerability details. Report security issues through the private security channel linked in SECURITY.md."
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - Docs-truth checker
+        - Organized Chaos skill
+    validations:
+      required: true
+  - type: input
+    id: revision
+    attributes:
+      label: Source revision
+      description: Commit SHA or archive digest used for this run.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, architecture, and Rust/Python/Codex version as applicable.
+    validations:
+      required: true
+  - type: textarea
+    id: attempt
+    attributes:
+      label: Attempt and steps
+      description: What task did you try, and what steps reproduce the result?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Expected and actual result
+      description: Include the first point where the result differed from your expectation.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized evidence
+      description: Optional minimal synthetic example or redacted error. Remove credentials and private source content.

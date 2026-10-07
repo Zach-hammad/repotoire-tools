@@ -1,13 +1,17 @@
 # Build and install locally
 
-Use Rust 1.97.1, as pinned in `rust-toolchain.toml`. In [Zach-hammad/repotoire-tools](https://github.com/Zach-hammad/repotoire-tools), change into the `docs-checker/` package root. With dependencies already cached, run:
+This source build needs Git, Rustup with Rust 1.97.1 (pinned in `rust-toolchain.toml`), and Cargo. macOS arm64 is the tested platform. From a public checkout, build and print the version:
 
 ```sh
-cargo build --offline --locked --release -p repotoire-cli
+git clone https://github.com/Zach-hammad/repotoire-tools.git
+cd repotoire-tools/docs-checker
+cargo build --locked --release -p repotoire-cli
 ./target/release/repotoire --version
 ```
 
-The executable is `target/release/repotoire`. Copy that executable into a directory on your `PATH` if you want a local install. Run `cargo test --offline --locked -p repotoire-cli` and `cargo test --offline --locked -p repotoire --test markdown_html_contracts` to verify the focused checker contracts. The `--offline` form requires the locked crates to be present locally; an unavailable crate is a build failure.
+The first build may download the locked crates. It needs network access if those crates are not already cached; an online cold build has not been qualified here. For a repeat build with every dependency cached, `cargo build --offline --locked --release -p repotoire-cli` prevents network access. The executable is `target/release/repotoire`; use that path for the [first demo](examples.md#first-result-matching-stale-and-unverified). Use this package-local binary alongside any existing RepoToire installation; leave other executables and `PATH` unchanged.
+
+Run `cargo test --offline --locked -p repotoire-cli` and `cargo test --offline --locked -p repotoire --test markdown_html_contracts` after dependencies are cached to verify the focused contracts. The `--offline` form fails if a locked crate is missing.
 
 The package uses a patched `ignore` 0.4.26 under `vendor/ignore`. Build from this root so Cargo applies the root `[patch.crates-io]` entry. Do not replace the vendored walker with an unpatched release: its ignored-entry and policy-input observations are part of the report's admission proof.
 
