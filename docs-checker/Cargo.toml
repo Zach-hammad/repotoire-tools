@@ -1,0 +1,34 @@
+[workspace]
+resolver = "2"
+members = ["crates/*"]
+exclude = ["vendor/ignore"]
+
+[workspace.package]
+version = "0.1.0-beta.10"
+license = "Apache-2.0"
+repository = "https://github.com/Zach-hammad/repotoire-tools"
+authors = ["Zacharia Hammad"]
+# Exact latest-stable support contract. Keep equal to rust-toolchain.toml;
+# scripts/ci_version_gate.py rejects drift before CI and release work.
+rust-version = "1.97.1"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+strip = "symbols"
+
+[profile.local-install]
+inherits = "release"
+lto = "off"
+codegen-units = 16
+incremental = true
+
+# Provenance tests hash large debug executables. Keep the SHA-256 backend
+# optimized so pointer checks in debug builds do not dominate test runtime.
+[profile.test.package.sha2]
+opt-level = 3
+
+# Task 17c: preserve ignore-walker admission while observing its authoritative matches.
+[patch.crates-io]
+ignore = { path = "vendor/ignore" }

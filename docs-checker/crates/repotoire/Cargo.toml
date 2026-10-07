@@ -1,0 +1,26 @@
+[package]
+name = "repotoire"
+edition = "2021"
+version.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+autotests = false
+
+[lints.rust]
+# These upstream branches are excluded from this checker package. Keep their
+# inactive cfg names known to check-cfg without making unusable features public.
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(feature, values("oxc-shadow", "python"))'] }
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["raw_value"] }
+toml = "0.8"
+libc = "0.2"
+ra_ap_parser = "=0.0.293"
+ra_ap_syntax = "=0.0.293"
+
+[[test]]
+name = "markdown_html_contracts"
+path = "tests/markdown_html_contracts.rs"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Organized Chaos"
+  short_description: "Your models, bounded tasks, independent review"
+  default_prompt: "Use $organized-chaos to configure my available models, split this authorized task, and coordinate implementation with independent review and ordered acceptance."

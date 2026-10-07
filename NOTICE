@@ -1,0 +1,14 @@
+Repotoire tools
+Copyright 2026 Zacharia Hammad
+
+First-party source and documentation in this distribution include the
+RepoToire docs-truth checker and Organized Chaos v2 skill.
+Repository: https://github.com/Zach-hammad/repotoire-tools
+These first-party files are licensed under the Apache License, Version 2.0.
+
+The bundled ignore 0.4.26 source in docs-checker/vendor/ignore/ retains
+its upstream MIT/Unlicense terms and attribution. See that directory's
+COPYING, LICENSE-MIT, UNLICENSE and REPOTOIRE-PATCH.md, and
+docs-checker/THIRD-PARTY-NOTICES.md.
+
+This NOTICE provides attribution and does not modify any license.

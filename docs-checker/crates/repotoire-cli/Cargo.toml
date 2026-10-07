@@ -1,0 +1,41 @@
+[package]
+name = "repotoire-cli"
+edition = "2021"
+version.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+autotests = false
+
+[lints.rust]
+# Existing Python branches in the source walker remain inactive in this slice.
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(feature, values("python"))'] }
+
+[lib]
+name = "repotoire_cli"
+path = "src/lib.rs"
+
+[[bin]]
+name = "repotoire"
+path = "src/main.rs"
+
+[dependencies]
+repotoire = { path = "../repotoire", default-features = false }
+ignore = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+toml = "0.8"
+cap-std = "4"
+libc = "0.2"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61", features = ["Win32_Foundation", "Win32_System_Pipes"] }
+
+[dev-dependencies]
+tempfile = "3"
+
+[[test]]
+name = "docs_truth_contracts"
+path = "tests/docs_truth_contracts.rs"

@@ -1,0 +1,13 @@
+RepoToire docs-truth checker
+Copyright 2026 Zacharia Hammad
+
+First-party source and documentation are licensed under the Apache
+License, Version 2.0. Repository:
+https://github.com/Zach-hammad/repotoire-tools
+
+The bundled ignore 0.4.26 source in vendor/ignore/ retains its upstream
+MIT/Unlicense terms and attribution. Preserve vendor/ignore/COPYING,
+LICENSE-MIT, UNLICENSE and REPOTOIRE-PATCH.md with the vendored source.
+See THIRD-PARTY-NOTICES.md for provenance and other dependency guidance.
+
+This NOTICE provides attribution and does not modify any license.
